@@ -95,10 +95,10 @@ class Downloader:
 if __name__ == '__main__':
     args = sys.argv
     if len(args) > 3:
-        downloader = Downloader(int(args[3]))
-        downloader.run(args[1], args[2])
+        downloader = Downloader(int(args[1]))
+        downloader.run(args[2], args[3])
     else:
         print 'Fail, params error, try:'
-        print 'python', args[0], 'your_m3u8_url', 'your_local_dir', 'multithread\n'
+        print 'python', args[0], 'multithread', 'your_m3u8_url', 'your_local_dir\n'
 
 
