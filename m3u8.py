@@ -1,3 +1,4 @@
+#!/usr/bin/python2
 #coding: utf-8
 
 from gevent import monkey
@@ -8,6 +9,7 @@ import requests
 import urlparse
 import os
 import time
+import sys
 
 class Downloader:
     def __init__(self, pool_size, retry=3):
@@ -91,5 +93,12 @@ class Downloader:
             outfile.close()
 
 if __name__ == '__main__':
-    downloader = Downloader(50)
-    downloader.run('http://m3u8.test.com/test.m3u8', '/home/video/')
+    args = sys.argv
+    if len(args) > 3:
+        downloader = Downloader(int(args[3]))
+        downloader.run(args[1], args[2])
+    else:
+        print 'Fail, params error, try:'
+        print 'python', args[0], 'your_m3u8_url', 'your_local_dir', 'multithread\n'
+
+
